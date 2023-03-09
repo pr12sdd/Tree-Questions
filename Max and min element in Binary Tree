@@ -1,0 +1,41 @@
+    void preorder(Node *root,vector<int> &m)
+    {
+        if(root==NULL)
+        {
+            return ;
+        }
+        else
+        {
+            m.push_back(root->data);
+            preorder(root->left,m);
+            preorder(root->right,m);
+        }
+    }
+    int findMax(Node *root)
+    {
+        vector<int> m;
+        preorder(root,m);
+        int max_element=INT_MIN;
+        for(int i=0;i<m.size();i++)
+        {
+            if(m[i]>max_element)
+            {
+                max_element=m[i];
+            }
+        }
+        return max_element;
+    }
+    int findMin(Node *root)
+    {
+        vector<int> m;
+        preorder(root,m);
+        int min_element=INT_MAX;
+        for(int i=0;i<m.size();i++)
+        {
+            if(m[i]<min_element)
+            {
+                min_element=m[i];
+            }
+        }
+        return min_element;
+    }
