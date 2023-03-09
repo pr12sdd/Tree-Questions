@@ -1,0 +1,21 @@
+int height(struct Node* node){
+        int count=1;
+        while(node!=NULL)
+        {
+            if(node->left!=NULL)
+            {
+                count++;
+                node=node->left;
+            }
+            else if(node->left==NULL && node->right!=NULL)
+            {
+                count++;
+                node=node->right;
+            }
+            else
+            {
+                return count;
+            }
+        }
+        
+    }
