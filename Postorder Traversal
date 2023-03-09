@@ -1,0 +1,18 @@
+void postorder(Node *root,vector<int> &m)
+{
+    if(root==NULL)
+    {
+        return ;
+    }
+    else
+    {
+        postorder(root->left,m);
+        postorder(root->right,m);
+        m.push_back(root->data);
+    }
+}
+vector <int> postOrder(Node* root)
+{     vector<int> m;
+      postorder(root,m);
+      return m;
+}
