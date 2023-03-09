@@ -1,0 +1,18 @@
+void Inorder(Node *root,vector<int> &m)
+    {
+        if(root==NULL)
+        {
+            return ;
+        }
+        else
+        {
+            Inorder(root->left,m);
+            m.push_back(root->data);
+            Inorder(root->right,m);
+        }
+    }
+    vector<int> inOrder(Node* root) {
+        vector<int> m;
+        Inorder(root,m);
+        return m;
+    }
