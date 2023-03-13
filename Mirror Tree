@@ -1,0 +1,30 @@
+void mirror(Node* node) {
+         queue<Node *>q;
+         q.push(node);
+         if(node==NULL)
+         {
+             return ;
+         }
+         while(1)
+         {
+             int size=q.size();
+             if(size==0)
+             {
+                 break ;
+             }
+             while(size!=0)
+             {
+                 Node *temp=q.front();
+                 q.pop();
+                 while(temp->left!=NULL)
+                 {
+                     q.push(temp->left);
+                 }
+                 while(temp->right!=NULL)
+                 {
+                     q.push(temp->right);
+                 }
+                 size--;
+             }
+         }
+    }
