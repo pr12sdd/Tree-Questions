@@ -1,0 +1,54 @@
+vector<int> traversal(Node *root,vector<int> &m)
+    {
+        queue<Node *> q;
+        q.push(root);
+        if(root==NULL)
+        {
+            return m;
+        }
+        while(1)
+        {
+            int size=q.size();
+            if(size==0)
+            {
+                return m;
+            }
+            while(size!=0)
+            {
+                Node *temp=q.front();
+                q.pop();
+                m.push_back(temp->data);
+                if(temp->left!=NULL)
+                {
+                    q.push(temp->left);
+                }
+                if(temp->right!=NULL)
+                {
+                    q.push(temp->right);
+                }
+                size--;
+            }
+        }
+    }
+    vector <int> findCommon(Node *root1, Node *root2)
+    {
+        vector <int> m;
+        traversal(root1,m);
+        vector <int> n;
+        traversal(root2,n);
+        unordered_set<int> s;
+        vector<int> k;
+        for(auto x:m)
+        {
+            s.insert(x);
+        }
+        for(auto x:n)
+        {
+            if(s.find(x)!=s.end())
+            {
+                k.push_back(x);
+            }
+        }
+        sort(k.begin(),k.end());
+        return k;
+    }
