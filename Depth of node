@@ -1,0 +1,36 @@
+vector<Node *> nodesAtOddLevels(Node *root)
+    {
+        int level=0;
+        vector<Node *> m;
+        queue<Node *> q;
+        q.push(root);
+        if(root==NULL)
+        {
+           return m;
+        }
+        while(1)
+        {
+            int size=q.size();
+            if(size==0)
+            {
+                return m;
+            }
+            level++;
+            while(size!=0)
+            {
+                Node *temp=q.front();
+                q.pop();
+                if(level%2!=0)
+                {m.push_back(temp);  }
+                if(temp->left!=NULL)
+                {
+                    q.push(temp->left);
+                }
+                if(temp->right!=NULL)
+                {
+                    q.push(temp->right);
+                }
+                size--;
+            }
+        }
+    }
