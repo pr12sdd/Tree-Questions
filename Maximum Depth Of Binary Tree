@@ -1,0 +1,34 @@
+int maxDepth(Node *root) {
+       vector<vector<int>> m;
+       queue<Node *> q;
+       q.push(root);
+       if(root==NULL)
+       {
+           return 0;
+       }
+       while(1)
+       {
+           int size=q.size();
+           if(size==0)
+           {
+              return m.size();
+           }
+           vector<int> ans;
+           while(size!=0)
+           {
+               Node *temp=q.front();
+               q.pop();
+               ans.push_back(temp->data);
+               if(temp->left!=NULL)
+               {
+                   q.push(temp->left);
+               }
+               if(temp->right!=NULL)
+               {
+                   q.push(temp->right);
+               }
+               size--;
+           }
+           m.push_back(ans);
+       }
+    }
