@@ -1,0 +1,16 @@
+unordered_set<int> s;
+void inorder( Node* root,int hd)
+{
+    if(root!=NULL)
+    {
+      inorder(root->left,hd-1);
+      s.insert(hd);
+      inorder(root->right,hd+1);
+    }
+}
+int verticalWidth(Node* root)
+{
+   s.clear();
+   inorder(root,0);
+   return s.size();
+}
