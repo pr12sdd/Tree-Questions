@@ -1,0 +1,35 @@
+int countNonLeafNodes(Node* root) {
+        int count=0;
+        queue<Node *> q;
+        q.push(root);
+        if(root==NULL)
+        {
+            return 0;
+        }
+        while(1)
+        {
+            int size=q.size();
+            if(size==0)
+            {
+                return count;
+            }
+            while(size!=0)
+            {
+                Node *temp=q.front();
+                q.pop();
+                if(temp->left!=NULL && temp->right!=NULL || temp->left!=NULL && temp->right==NULL
+                || temp->right!=NULL && temp->left==NULL)
+                {
+                    count++;
+                }
+                if(temp->left!=NULL)
+                {
+                    q.push(temp->left);
+                }
+                if(temp->right!=NULL)
+                {
+                    q.push(temp->right);
+                }
+                size--;
+            }
+        }  }
