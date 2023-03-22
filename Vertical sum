@@ -1,0 +1,23 @@
+   map<int,int> m;
+    void sum(Node *root,int hd)
+    {
+        if(root==NULL)
+        {
+            return ;
+        }
+        else
+        {
+            m[hd]=m[hd]+root->data;
+            sum(root->left,hd-1);
+            sum(root->right,hd+1);
+        }
+    }
+    vector <int> verticalSum(Node *root) {
+        sum(root,0);
+        vector<int> k;
+        for(auto itr=m.begin();itr!=m.end();itr++)
+        {
+            k.push_back(itr->second);
+        }
+        return k;
+    }
