@@ -1,0 +1,19 @@
+ int maxPathSum(Node* root)
+    {
+      if(root==NULL)
+      {
+          return 0;
+      }
+      int left=maxPathSum(root->left);
+      int right=maxPathSum(root->right);
+      int ans=0;
+      if(left==0 && right!=0)
+      {ans=right+root->data;  }
+      else if(right==0 && left!=0)
+      { ans=left+root->data; }
+      else
+      {
+          ans=max(left+root->data,right+root->data);
+      }
+      return ans;
+    }
