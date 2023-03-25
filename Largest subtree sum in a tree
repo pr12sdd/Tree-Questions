@@ -1,0 +1,18 @@
+    int max_element=INT_MIN;
+    int sum(Node* root)
+    {
+        if(root==NULL)
+        {
+            return 0;
+        }
+        int left=sum(root->left);
+        int right=sum(root->right);
+        int ans=left+right+root->data;
+        max_element=max(max_element,ans);
+        return ans;
+    }
+    int findLargestSubtreeSum(Node* root)
+    {
+        int x=sum(root);
+        return max_element;
+    }
