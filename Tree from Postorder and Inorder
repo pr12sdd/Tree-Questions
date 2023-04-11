@@ -1,0 +1,30 @@
+int post_index;
+Node* ctree(int in[],int post[],int a,int b)
+{
+    if(a>b)
+    {
+        return NULL;
+    }
+    Node *root=(Node *)malloc(sizeof(Node *));
+    root->data=post[post_index];
+    post_index--;
+    int index=0;
+    for(int i=a;i<=b;i++)
+    {
+        if(in[i]==root->data)
+        {
+            index=i;
+        }
+    }
+    
+    root->right=ctree(in,post,index+1,b);
+    root->left=ctree(in,post,a,index-1);
+    
+    return root;
+}
+
+Node *buildTree(int in[], int post[], int n) {
+    post_index=n-1;
+    Node * temp=ctree(in,post,0,n-1);
+    return temp;
+}
